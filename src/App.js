@@ -1,7 +1,14 @@
+import React from "react";
 import Header from "./Components/Header/Header";
+import MealsInfo from "./Components/Meals/MealsInfo";
 function App() {
   return (
-    <Header />
+    <React.Fragment>
+      <Header />
+      <main>
+        <MealsInfo />
+      </main>
+    </React.Fragment>
   );
 }
 
