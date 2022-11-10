@@ -12,6 +12,8 @@ const Header = () => {
         </div>
         <CartButton />
       </header>
+      <div className={classes.image}>
+      </div>
     </React.Fragment>
   );
 };
