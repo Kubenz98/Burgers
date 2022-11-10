@@ -1,0 +1,22 @@
+.button {
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #ddd;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    & svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    &__amount {
+        padding: 5px 15px;
+        margin-left: 10px;
+        background-color: #aaa;
+        border-radius: 10px;
+    }
+}
