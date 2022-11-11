@@ -1,22 +1,19 @@
 import classes from "./MealItem.module.scss";
-import burgerImage from "../../assets/masterburger.jpg";
-const MealItem = () => {
+// import burg from './masterburger.jpg'
+const MealItem = (props) => {
+  console.log(props);
+  
   return (
-    <li className={classes.meal}>
-      <div>
-        <h3 className={classes["meal__title"]}>Master Burger</h3>
-        <p className={classes["meal__ing"]}>
-          beef (140g), bacon, champignons, cheese, lettuce, pickles, red onion,
-          chef sauce, roll with sesame seeds
-        </p>
-        <p className={classes["meal__opt"]}>
-          Optional: onion rings (100g), chips (100g), coleslaw (100g) and more.
-        </p>
-        <span className={classes["meal__price"]}>$19,99</span>
+    <li className={classes.item}>
+      <div className={classes["item__container"]}>
+        <h3 className={classes["item__title"]}>{props.title}</h3>
+        <p className={classes["item__ing"]}>{props.ingredients}</p>
+        <p className={classes["item__opt"]}>{props.optional}</p>
+        <span className={classes["item__price"]}>${props.price}</span>
       </div>
       <div className={classes.right}>
         <div className={classes["right__image"]}>
-          <img src={burgerImage} />
+          <img src={props.image} />
         </div>
         <span>+</span>
       </div>

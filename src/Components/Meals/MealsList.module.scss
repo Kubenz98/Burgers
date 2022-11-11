@@ -1,9 +1,22 @@
 .list {
   width: 90%;
   max-width: 1024px;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 0 auto 20px;
   background-color: #efefef;
-  box-shadow: 0 2px 18px 0px rgb(0 0 0 / 25%);
+  // box-shadow: 0 2px 18px 0px rgb(0 0 0 / 25%);
   border-radius: 10px;
+}
+
+.image {
+  width: 90%;
+  max-width: 1024px;
+  height: 150px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 20px;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
