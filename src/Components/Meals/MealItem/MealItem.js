@@ -1,10 +1,18 @@
 import classes from "./MealItem.module.scss";
-// import burg from './masterburger.jpg'
+
 const MealItem = (props) => {
-  console.log(props);
-  
+  const clickHandler = () => {
+    props.modalHandle();
+    props.mealHandle({
+      title: props.title,
+      ingredients: props.ingredients,
+      price: props.price,
+      img: props.image,
+    });
+  };
+
   return (
-    <li className={classes.item}>
+    <li className={classes.item} onClick={clickHandler}>
       <div className={classes["item__container"]}>
         <h3 className={classes["item__title"]}>{props.title}</h3>
         <p className={classes["item__ing"]}>{props.ingredients}</p>
@@ -13,7 +21,7 @@ const MealItem = (props) => {
       </div>
       <div className={classes.right}>
         <div className={classes["right__image"]}>
-          <img src={props.image} />
+          <img src={props.image} alt='meal-img'/>
         </div>
         <span>+</span>
       </div>

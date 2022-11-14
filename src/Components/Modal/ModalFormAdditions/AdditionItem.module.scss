@@ -1,0 +1,12 @@
+.addition {
+  margin-bottom: 5px;
+
+  & input {
+    margin: 5px 5px 5px 0;
+    transform: scale(1.2);
+  }
+  & label {
+    font-size: 18px;
+    font-weight: 300;
+  }
+}
