@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ModalMeal from "./ModalMeal";
 import ModalForm from "./ModalForm";
+import Cart from "../Cart/Cart";
 import classes from "./Modal.module.scss";
 
 const ModalOverlay = (props) => {
@@ -17,6 +18,7 @@ const ModalOverlay = (props) => {
         <button onClick={clickHandler} className={classes.close}>
           -
         </button>
+        {props.cartStatus && <Cart />}
         {!props.cartStatus && <ModalMeal meal={props.meal} />}
         {!props.cartStatus && <ModalForm meal={props.meal} />}
       </div>

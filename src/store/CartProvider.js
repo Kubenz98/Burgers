@@ -14,7 +14,7 @@ export const CartProvider = (props) => {
 
     const [orderedMeal, dispatchMeal] = useReducer(mealReducer, defaultCartContent)
 
-  return <CartContext.Provider value={{}}>{props.children}</CartContext.Provider>;
+  return <CartContext.Provider value={{orderedMeal: orderedMeal}}>{props.children}</CartContext.Provider>;
 };
 
 export default CartProvider;
