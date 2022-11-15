@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ModalFormAdditions from "./ModalFormAdditions/ModalFormAdditions";
 import classes from "./ModalForm.module.scss";
 const ModalForm = (props) => {
-  const [totalValue, setTotalValue] = useState(props.price);
+  const [totalValue, setTotalValue] = useState(props.meal.price);
   const [inputValue, setInputValue] = useState(1);
   const [additionsPrice, setAdditionsPrice] = useState(0);
 
@@ -26,12 +26,18 @@ const ModalForm = (props) => {
   };
 
   useEffect(() => {
-    const newValue = ((props.price + additionsPrice) * inputValue).toFixed(2);
+    const newValue = ((props.meal.price + additionsPrice) * inputValue).toFixed(2);
     setTotalValue(newValue);
-  }, [props.price, inputValue, additionsPrice]);
+  }, [props.meal.price, inputValue, additionsPrice]);
+  // console.log(props);
+  
 
   const formHandler = (event) => {
     event.preventDefault();
+    // const orderedMeal = {
+    //   id: 
+    // }
+    
   };
   return (
     <React.Fragment>

@@ -1,8 +1,8 @@
 import React from "react";
 import BurgerIcon from "./BurgerIcon";
-import CartButton from "./CartButton";
+import CartButton from "../Cart/CartButton";
 import classes from "./Header.module.scss";
-const Header = () => {
+const Header = (props) => {
   return (
     <React.Fragment>
       <header className={classes.header}>
@@ -10,7 +10,7 @@ const Header = () => {
           <BurgerIcon />
           <h2>Burgers</h2>
         </div>
-        <CartButton />
+        <CartButton cartHandle={props.cartHandle} modalHandle={props.modalHandle}/>
       </header>
       <div className={classes.image}>
       </div>

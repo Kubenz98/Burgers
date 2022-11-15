@@ -2,28 +2,39 @@ import React, { useState } from "react";
 import Header from "./Components/Header/Header";
 import MealsInfo from "./Components/Meals/MealsInfo";
 import MealsList from "./Components/Meals/MealsList";
-import Modal from "./Components/Modal/Modal"
-function App() {
+import Modal from "./Components/Modal/Modal";
+import CartProvider from "./store/CartProvider";
 
+function App() {
   const [isModalActive, setIsModalActive] = useState(false);
-  const [clickedMeal, setClickedMeal] = useState('');
+  const [clickedMeal, setClickedMeal] = useState("");
+  const [isCartActive, setIsCartActive] = useState(false);
+
+  // console.log(isCartActive)
 
   const modalHandler = () => {
     setIsModalActive((prevState) => !prevState);
-  }
+  };
 
   const getClickedMeal = (item) => {
     setClickedMeal(item);
-  }
+  };
   return (
-    <React.Fragment>
-      {isModalActive && <Modal modalHandle={modalHandler} mealHandle={clickedMeal}/>}
-      <Header />
+    <CartProvider>
+      {isModalActive && (
+        <Modal
+          modalHandle={modalHandler}
+          mealHandle={clickedMeal}
+          cartStatus={isCartActive}
+          cartHandle={setIsCartActive}
+        />
+      )}
+      <Header cartHandle={setIsCartActive} modalHandle={modalHandler} />
       <main>
         <MealsInfo />
-        <MealsList modalHandle={modalHandler} mealHandle={getClickedMeal}/>
+        <MealsList modalHandle={modalHandler} mealHandle={getClickedMeal} />
       </main>
-    </React.Fragment>
+    </CartProvider>
   );
 }
 

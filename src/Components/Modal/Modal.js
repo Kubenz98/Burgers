@@ -6,12 +6,19 @@ import classes from "./Modal.module.scss";
 
 const ModalOverlay = (props) => {
   
+  const clickHandler = () => {
+    props.modalHandle();
+    props.cartHandle(false);
+  }
+
   return (
     <div className={classes.overlay}>
       <div className={classes.modal}>
-        <button onClick={props.modalHandle} className={classes.close}>-</button>
-        <ModalMeal meal={props.meal} />
-        <ModalForm price={props.meal.price}/>
+        <button onClick={clickHandler} className={classes.close}>
+          -
+        </button>
+        {!props.cartStatus && <ModalMeal meal={props.meal} />}
+        {!props.cartStatus && <ModalForm meal={props.meal} />}
       </div>
     </div>
   );
@@ -24,6 +31,8 @@ const Modal = (props) => {
         <ModalOverlay
           modalHandle={props.modalHandle}
           meal={props.mealHandle}
+          cartStatus={props.cartStatus}
+          cartHandle={props.cartHandle}
         />,
         document.getElementById("overlay")
       )}
