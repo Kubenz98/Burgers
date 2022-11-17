@@ -48,6 +48,8 @@ const ModalForm = (props) => {
       return addition.name;
     });
 
+    // console.log(props.meal);
+    
     const order = {
       id: Math.random(),
       title: props.meal.title,

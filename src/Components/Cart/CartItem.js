@@ -1,13 +1,15 @@
 import classes from "./CartItem.module.scss";
 const CartItem = (props) => {
-
-  const clickAdd = () => { 
-    props.clickAddHandle(props.itemData)
-  }
+  const clickAdd = () => {
+    props.clickAddHandle(props.itemData);
+  };
 
   const clickRemove = () => {
-    props.clickRemoveHandle(props.itemData)
-  }
+    props.clickRemoveHandle(props.itemData);
+  };
+
+  const priceWithAdditions =
+    props.itemData.price + props.itemData.additionsPrice;
   return (
     <div className={classes.mealItem}>
       <div className={classes["mealItem__amount"]}>
@@ -16,7 +18,7 @@ const CartItem = (props) => {
       <div className={classes["mealItem__container"]}>
         <div className={classes["mealItem__container-info"]}>
           <h3>{props.itemData.title}</h3>
-          <span>${props.itemData.price}</span>
+          <span>${priceWithAdditions}</span>
         </div>
         <div className={classes["mealItem__additions"]}>
           <span>{props.itemData.additions.join(", ")}</span>

@@ -3,6 +3,7 @@ import CartContext from "./cart-context";
 
 const CartReducer = (state, action) => {
   if (action.type === "ADD") {
+    
     const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
     const existingItem = state.items.find((el) => el.title === action.val.title && equals(el.additions, action.val.additions)
@@ -87,7 +88,7 @@ export const CartProvider = (props) => {
   };
   const MinusOneItemHandler = (item) => {
     dispatchCartAction({ type: "MINUS_ONE", val: item });
-  };
+  };  
 
   return (
     <CartContext.Provider
