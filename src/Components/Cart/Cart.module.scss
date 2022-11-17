@@ -1,5 +1,10 @@
 .cart {
   padding: 40px 20px 20px;
   width: 100%;
+  & ul {
+    padding: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
 }
 

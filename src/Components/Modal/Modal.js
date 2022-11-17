@@ -6,11 +6,10 @@ import Cart from "../Cart/Cart";
 import classes from "./Modal.module.scss";
 
 const ModalOverlay = (props) => {
-  
   const clickHandler = () => {
     props.modalHandle();
     props.cartHandle(false);
-  }
+  };
 
   return (
     <div className={classes.overlay}>

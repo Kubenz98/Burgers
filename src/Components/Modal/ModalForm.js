@@ -1,49 +1,68 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ModalFormAdditions from "./ModalFormAdditions/ModalFormAdditions";
+import CartContext from "../../store/cart-context";
 import classes from "./ModalForm.module.scss";
 const ModalForm = (props) => {
   const [totalValue, setTotalValue] = useState(props.meal.price);
   const [inputValue, setInputValue] = useState(1);
-  const [additionsPrice, setAdditionsPrice] = useState(0);
+  const [additions, setAdditions] = useState({
+    filteredAdditions: [],
+    price: 0,
+  });
 
-  const inputValueIncrease = () => {
+  const ctx = useContext(CartContext);
+
+  const inputValueIncrease = (e) => {
+    e.preventDefault();
     if (inputValue < 9) {
       setInputValue((prevState) => (prevState += 1));
     } else return;
   };
-  const inputValueDecrease = () => {
+  const inputValueDecrease = (e) => {
+    e.preventDefault();
     if (inputValue > 1) {
       setInputValue((prevState) => (prevState -= 1));
     } else return;
   };
 
-  const inputChangeHandler = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const getAdditionsPrice = (price) => {
-    setAdditionsPrice(price);
-  };
-
   useEffect(() => {
-    const newValue = ((props.meal.price + additionsPrice) * inputValue).toFixed(2);
+    const newValue =
+      ((props.meal.price + additions.price) * inputValue).toFixed(2) * 1;
+
     setTotalValue(newValue);
-  }, [props.meal.price, inputValue, additionsPrice]);
-  // console.log(props);
-  
+  }, [props.meal.price, inputValue, additions.price]);
+
+  const getAdditions = (data) => {
+    const filteredAdditions = data.additions.filter((el) => el.added === true);
+    const filteredAdditionsAndPrice = {
+      additions: filteredAdditions,
+      price: data.price,
+    };
+    setAdditions(filteredAdditionsAndPrice);
+  };
 
   const formHandler = (event) => {
     event.preventDefault();
-    // const orderedMeal = {
-    //   id: 
-    // }
-    
+
+    const additionsTitles = additions.additions.map((addition) => {
+      return addition.name;
+    });
+
+    const order = {
+      id: Math.random(),
+      title: props.meal.title,
+      price: props.meal.price,
+      additions: additionsTitles,
+      additionsPrice: additions.price,
+      amount: inputValue,
+    };
+    ctx.addItem(order);
   };
   return (
     <React.Fragment>
       <form onSubmit={formHandler}>
         <h4>additions:</h4>
-        <ModalFormAdditions getPrice={getAdditionsPrice} />
+        <ModalFormAdditions getAdditions={getAdditions} />
         <div className={classes.amount}>
           <div className={classes["amount__container"]}>
             <button className={classes.dec} onClick={inputValueDecrease}>
@@ -52,10 +71,10 @@ const ModalForm = (props) => {
             <input
               type="number"
               value={inputValue}
+              readOnly
               min="1"
               max="9"
               step="1"
-              onChange={inputChangeHandler}
               className={classes["amount__value"]}
             />
             <button className={classes.inc} onClick={inputValueIncrease}>

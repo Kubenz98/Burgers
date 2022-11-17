@@ -10,8 +10,6 @@ function App() {
   const [clickedMeal, setClickedMeal] = useState("");
   const [isCartActive, setIsCartActive] = useState(false);
 
-  // console.log(isCartActive)
-
   const modalHandler = () => {
     setIsModalActive((prevState) => !prevState);
   };
