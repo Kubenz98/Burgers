@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CartItem from "./CartItem";
 import CartContext from "../../store/cart-context";
 import classes from "./Cart.module.scss";
@@ -11,6 +11,14 @@ const Cart = () => {
   const clickRemoveHandler = (item) => {
     ctx.minus(item);
   };
+
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
+
+  useEffect(() => {
+    if (ctx.totalAmount > 0) {
+      setIsCartEmpty(false);
+    } else setIsCartEmpty(true);
+  }, [ctx.totalAmount]);
 
   const filteredItems = ctx.items.filter((el) => el.amount > 0);
 
@@ -26,6 +34,7 @@ const Cart = () => {
           />
         ))}
       </ul>
+      {isCartEmpty && <p>Your cart is empty. Add some food, please!</p>}
     </div>
   );
 };

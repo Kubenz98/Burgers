@@ -78,7 +78,6 @@ export const CartProvider = (props) => {
     defaultCartContent
   );
 
-  console.log(cartState);
 
   const addOrderHandler = (item) => {
     dispatchCartAction({ type: "ADD", val: item });

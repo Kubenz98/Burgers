@@ -6,5 +6,10 @@
     max-height: 400px;
     overflow-y: auto;
   }
+  & p {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+  }
 }
 

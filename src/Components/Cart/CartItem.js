@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import classes from "./CartItem.module.scss";
 const CartItem = (props) => {
 
