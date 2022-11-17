@@ -47,8 +47,6 @@ const ModalForm = (props) => {
     const additionsTitles = additions.additions.map((addition) => {
       return addition.name;
     });
-
-    // console.log(props.meal);
     
     const order = {
       id: Math.random(),

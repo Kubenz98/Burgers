@@ -11,7 +11,7 @@ const CartItem = (props) => {
   const priceWithAdditions =
     props.itemData.price + props.itemData.additionsPrice;
   return (
-    <div className={classes.mealItem}>
+    <li className={classes.mealItem}>
       <div className={classes["mealItem__amount"]}>
         <strong>x{props.itemData.amount}</strong>
       </div>
@@ -30,7 +30,7 @@ const CartItem = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

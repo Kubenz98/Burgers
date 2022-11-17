@@ -24,7 +24,8 @@ const Cart = () => {
 
   return (
     <div className={classes.cart}>
-      <ul>
+      <h2>Cart</h2>
+      {!isCartEmpty && <ul>
         {filteredItems.map((item, index) => (
           <CartItem
             itemData={item}
@@ -33,7 +34,7 @@ const Cart = () => {
             clickRemoveHandle={clickRemoveHandler}
           />
         ))}
-      </ul>
+      </ul>}
       {isCartEmpty && <p>Your cart is empty. Add some food, please!</p>}
       {!isCartEmpty && (
         <button className={classes["cart__button"]}>

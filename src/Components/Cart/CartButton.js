@@ -13,7 +13,7 @@ const CartButton = (props) => {
   return (
     <button className={classes.button} onClick={clickHandler}>
       <CartIcon />
-      Your cart
+      <span className={classes['button__title']}>Your cart</span>
       <span className={classes["button__amount"]}>{ctx.totalAmount}</span>
     </button>
   );

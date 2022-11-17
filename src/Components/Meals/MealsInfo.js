@@ -2,7 +2,7 @@ import classes from "./MealsInfo.module.scss";
 const MealsInfo = () => {
   return (
     <section className={classes.summary}>
-      <h2>Beef Burgers, The best taste, the best quality</h2>
+      <h2>Beef Burgers, The Best Taste, The Best Quality</h2>
       <p>
         Choose your favorite burger with chips or onion rings from our broad
         selection of available meals and enjoy a delicious taste at home.

@@ -8,10 +8,21 @@
     font-weight: bold;
     border: none;
     cursor: pointer;
+    &__title {
+        @media (max-width: 560px) {
+            display: none;
+        }
+    }
+    @media (max-width: 560px) {
+        padding: 8px 15px;
+    }
     & svg {
         width: 20px;
         height: 20px;
         margin-right: 10px;
+        @media (max-width: 560px) {
+            margin-right: 5px;
+        }
     }
 
     &__amount {
@@ -19,5 +30,8 @@
         margin-left: 10px;
         background-color: #ffa244;
         border-radius: 10px;
+        @media (max-width: 560px) {
+            margin-left: 5px;
+        }
     }
 }

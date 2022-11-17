@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import ModalCloseIcon from "./ModalCloseIcon";
 import ModalMeal from "./ModalMeal";
@@ -11,7 +11,10 @@ const ModalOverlay = (props) => {
     props.modalHandle();
     props.cartHandle(false);
   };
-
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "unset");
+  }, []);
   return (
     <div className={classes.overlay}>
       <div className={classes.modal}>
@@ -20,7 +23,9 @@ const ModalOverlay = (props) => {
         </button>
         {props.cartStatus && <Cart />}
         {!props.cartStatus && <ModalMeal meal={props.meal} />}
-        {!props.cartStatus && <ModalForm meal={props.meal} modalHandle={props.modalHandle}/>}
+        {!props.cartStatus && (
+          <ModalForm meal={props.meal} modalHandle={props.modalHandle} />
+        )}
       </div>
     </div>
   );

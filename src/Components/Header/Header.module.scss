@@ -17,11 +17,18 @@
     & svg {
       width: 50px;
       height: 50px;
+      @media (max-width: 560px) {
+        width: 40px;
+        height: 40px;
+      }
     }
     & h2 {
       margin-left: 5px;
       font-size: 34px;
       color: #222;
+      @media (max-width: 560px) {
+        font-size: 26px;
+      }
     }
   }
 }
@@ -36,6 +43,12 @@
   background-position: center;
   background-size: cover;
   box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+  @media(max-width: 768px) {
+    height: 400px;
+  }
+  @media(max-width: 530px) {
+    height: 350px;
+  }
 
   & img {
     width: 100%;
