@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f516f1bd.css",
+    "main.js": "/static/js/main.f70479f5.js",
+    "static/media/burger5.jpg": "/static/media/burger5.7129d85a0c2e5c18b4d5.jpg",
+    "static/media/nuggetsList.jpg": "/static/media/nuggetsList.7de99b95e792594f6fe3.jpg",
+    "static/media/burgerlist.jpg": "/static/media/burgerlist.8db8daeee574b09980c9.jpg",
+    "static/media/masterburger.jpg": "/static/media/masterburger.cfe90abd346270f4ecbf.jpg",
+    "static/media/rolls.jpg": "/static/media/rolls.6d6d27a7fcea9c29a310.jpg",
+    "static/media/oklahoma.jpg": "/static/media/oklahoma.f051a26e8cce9f5317b2.jpg",
+    "static/media/nuggets.jpg": "/static/media/nuggets.e442a8c4d0a90aa44602.jpg",
+    "static/media/burger.jpg": "/static/media/burger.24b9f31d08367fe69231.jpg",
+    "index.html": "/index.html",
+    "main.f516f1bd.css.map": "/static/css/main.f516f1bd.css.map",
+    "main.f70479f5.js.map": "/static/js/main.f70479f5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f516f1bd.css",
+    "static/js/main.f70479f5.js"
+  ]
+}
