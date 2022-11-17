@@ -2,7 +2,8 @@
     display: flex;
     align-items: center;
     padding: 10px 30px;
-    background-color: #ddd;
+    color: white;
+    background-color: #ff8000;
     border-radius: 10px;
     font-weight: bold;
     border: none;
@@ -16,7 +17,7 @@
     &__amount {
         padding: 5px 15px;
         margin-left: 10px;
-        background-color: #aaa;
+        background-color: #ffa244;
         border-radius: 10px;
     }
 }
