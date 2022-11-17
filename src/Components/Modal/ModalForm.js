@@ -57,6 +57,7 @@ const ModalForm = (props) => {
       amount: inputValue,
     };
     ctx.addItem(order);
+    props.modalHandle();
   };
   return (
     <React.Fragment>

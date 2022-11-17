@@ -19,7 +19,7 @@ const ModalOverlay = (props) => {
         </button>
         {props.cartStatus && <Cart />}
         {!props.cartStatus && <ModalMeal meal={props.meal} />}
-        {!props.cartStatus && <ModalForm meal={props.meal} />}
+        {!props.cartStatus && <ModalForm meal={props.meal} modalHandle={props.modalHandle}/>}
       </div>
     </div>
   );

@@ -35,6 +35,7 @@ const Cart = () => {
         ))}
       </ul>
       {isCartEmpty && <p>Your cart is empty. Add some food, please!</p>}
+      {!isCartEmpty && <button className={classes['cart__button']}>Buy (${ctx.totalPrice.toFixed(2)})</button>}
     </div>
   );
 };
