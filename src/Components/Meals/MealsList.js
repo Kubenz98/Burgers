@@ -3,6 +3,7 @@ import classes from "./MealsList.module.scss";
 import MealItem from "./MealItem/MealItem";
 import master from "../../assets/masterburger.jpg";
 import burger from "../../assets/burger.jpg";
+import oklahoma from "../../assets/oklahoma.jpg"
 import burgerList from "../../assets/burgerlist.jpg";
 import nuggetsList from "../../assets/nuggetsList.jpg";
 import nuggets from "../../assets/nuggets.jpg";
@@ -31,7 +32,7 @@ const meals = [
   },
   {
     id: "m3",
-    image: burger,
+    image: oklahoma,
     title: "Oklahoma Burger",
     ingredients:
       "beef (140g), cheese, roasted onion, pickles, red onion, chef sauce, roll with sesame seeds",
