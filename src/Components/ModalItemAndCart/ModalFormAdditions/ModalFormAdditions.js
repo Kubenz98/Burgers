@@ -1,7 +1,7 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, memo } from "react";
 import AdditionItem from "./AdditionItem";
 
-const addersReducer = (state, action) => {
+const additionsReducer = (state, action) => {
   if (action.type === "UPDATE_STATE") {
     return { ...state, additions: action.val };
   }
@@ -32,36 +32,36 @@ const ModalFormAdditions = (props) => {
     price: 0,
   };
 
-  const [adders, dispatchAdders] = useReducer(addersReducer, additionsList);
+  const [additions, dispatchAdditions] = useReducer(additionsReducer, additionsList);
 
   const handleChange = (position) => {
-    const updatedCheckedState = adders.additions.map((item, index) => {
+    const updatedCheckedState = additions.additions.map((item, index) => {
       if (index === position) {
         return { ...item, added: !item.added };
       } else return item;
     });
 
-    dispatchAdders({ type: "UPDATE_STATE", val: updatedCheckedState });
+    dispatchAdditions({ type: "UPDATE_STATE", val: updatedCheckedState });
 
     const totalPrice = updatedCheckedState.reduce(
       (sum, currentState, index) => {
         if (currentState.added === true) {
-          return sum + adders.additions[index].price;
+          return sum + additions.additions[index].price;
         }
         return sum;
       },
       0
     );
-    dispatchAdders({ type: "UPDATE_PRICE", val: totalPrice });
+    dispatchAdditions({ type: "UPDATE_PRICE", val: totalPrice });
   };
 
   useEffect(() => {
-    props.getAdditions(adders);
-  }, [adders]);
+    props.getAdditions(additions);
+  }, [additions, props]);
 
   return (
     <React.Fragment>
-      {adders.additions.map((addition, index) => (
+      {additions.additions.map((addition, index) => (
         <AdditionItem
           additionData={addition}
           key={index}
@@ -72,4 +72,4 @@ const ModalFormAdditions = (props) => {
   );
 };
 
-export default ModalFormAdditions;
+export default memo(ModalFormAdditions);
