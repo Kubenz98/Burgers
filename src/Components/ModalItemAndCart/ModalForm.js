@@ -62,7 +62,7 @@ const ModalForm = (props) => {
   return (
     <React.Fragment>
       <form onSubmit={formHandler}>
-        <h4>additions:</h4>
+        <h4>additives:</h4>
         <ModalFormAdditions getAdditions={getAdditions} />
         <div className={classes.amount}>
           <div className={classes["amount__container"]}>
