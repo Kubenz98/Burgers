@@ -65,6 +65,12 @@ const CartReducer = (state, action) => {
       totalPrice: updatedTotalPrice.toFixed(2) * 1,
       totalAmount: updatedTotalAmount
     };
+  } else if (action.type === "CLEAR_ALL") {
+    return {
+      items: [],
+      totalPrice: 0,
+      totalAmount: 0,
+    }
   }
 };
 export const CartProvider = (props) => {
@@ -90,6 +96,10 @@ export const CartProvider = (props) => {
     dispatchCartAction({ type: "MINUS_ONE", val: item });
   };  
 
+  const buyHandler = () => {
+    dispatchCartAction({ type: "CLEAR_ALL"})
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -99,6 +109,7 @@ export const CartProvider = (props) => {
         addItem: addOrderHandler,
         plus: PlusOneItemHandler,
         minus: MinusOneItemHandler,
+        buyHandler: buyHandler
       }}
     >
       {props.children}

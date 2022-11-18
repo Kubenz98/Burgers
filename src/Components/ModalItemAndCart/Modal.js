@@ -21,7 +21,7 @@ const ModalOverlay = (props) => {
         <button onClick={clickHandler} className={classes.close}>
           <ModalCloseIcon />
         </button>
-        {props.cartStatus && <Cart />}
+        {props.cartStatus && <Cart modalHandle={props.modalHandle} modalAfterBuyHandle={props.modalAfterBuyHandle} cartIsActiveHandler={props.cartHandle}/>}
         {!props.cartStatus && <ModalMeal meal={props.meal} />}
         {!props.cartStatus && (
           <ModalForm meal={props.meal} modalHandle={props.modalHandle} />
@@ -40,6 +40,7 @@ const Modal = (props) => {
           meal={props.mealHandle}
           cartStatus={props.cartStatus}
           cartHandle={props.cartHandle}
+          modalAfterBuyHandle={props.modalAfterBuyHandle}
         />,
         document.getElementById("overlay")
       )}
