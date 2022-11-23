@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, memo } from "react";
 import AdditionItem from "./AdditionItem";
+import AdditionsList from "./Dummy_AdditionsList";
 
 const additionsReducer = (state, action) => {
   if (action.type === "UPDATE_STATE") {
@@ -12,27 +13,12 @@ const additionsReducer = (state, action) => {
 };
 
 const ModalFormAdditions = (props) => {
-  const additionsList = {
-    additions: [
-      {
-        name: "onion rings 100g (+ $1,99)",
-        price: 1.99,
-        id: "add1",
-        added: false,
-      },
-      { name: "chips 100g (+ $1,99)", price: 1.99, id: "add2", added: false },
-      { name: "coleslaw (+ $1,99)", price: 1.99, id: "add3", added: false },
-      {
-        name: "three sauces (sweet and sour, garlic, BBQ) (+ $1,99)",
-        price: 1.99,
-        id: "add4",
-        added: false,
-      },
-    ],
+  const initialAdditions = {
+    additions: AdditionsList,
     price: 0,
   };
 
-  const [additions, dispatchAdditions] = useReducer(additionsReducer, additionsList);
+  const [additions, dispatchAdditions] = useReducer(additionsReducer, initialAdditions);
 
   const handleChange = (position) => {
     const updatedCheckedState = additions.additions.map((item, index) => {

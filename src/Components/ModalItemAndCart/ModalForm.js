@@ -1,4 +1,5 @@
-import React, { useContext, useReducer, useRef, useCallback } from "react";
+import React, { useContext, useReducer, useCallback } from "react";
+import ModalFormAmount from "./ModalFormAmount";
 import ModalFormAdditions from "./ModalFormAdditions/ModalFormAdditions";
 import CartContext from "../../store/cart-context";
 import classes from "./ModalForm.module.scss";
@@ -36,28 +37,6 @@ const ModalForm = (props) => {
   );
 
   const ctx = useContext(CartContext);
-  const inputRef = useRef(1);
-
-  const inputValueIncrease = (e) => {
-    e.preventDefault();
-    if (inputRef.current.value < 9) {
-      inputRef.current.value++;
-      dispatchFormAction({
-        type: "CHANGE_INPUT",
-        val: inputRef.current.value * 1,
-      });
-    } else return;
-  };
-  const inputValueDecrease = (e) => {
-    e.preventDefault();
-    if (inputRef.current.value > 1) {
-      inputRef.current.value--;
-      dispatchFormAction({
-        type: "CHANGE_INPUT",
-        val: inputRef.current.value * 1,
-      });
-    } else return;
-  };
 
   const getAdditions = useCallback((data) => {
     const filteredAdditions = data.additions.filter((el) => el.added === true);
@@ -70,7 +49,7 @@ const ModalForm = (props) => {
       val: filteredAdditionsAndPrice,
     });
   }, []);
-  
+
   const formHandler = (event) => {
     event.preventDefault();
 
@@ -95,27 +74,7 @@ const ModalForm = (props) => {
         <h4>additives:</h4>
         <ModalFormAdditions getAdditions={getAdditions} />
         <div className={classes.amount}>
-          <div className={classes["amount__container"]}>
-            <button className={classes.dec} onClick={inputValueDecrease}>
-              -
-            </button>
-            <input
-              ref={inputRef}
-              type="number"
-              defaultValue={1}
-              readOnly
-              min="1"
-              max="9"
-              step="1"
-              className={classes["amount__value"]}
-            />
-            <button className={classes.inc} onClick={inputValueIncrease}>
-              +
-            </button>
-          </div>
-          <button className={classes["amount__button"]}>
-            ${formState.totalValue.toFixed(2)}
-          </button>
+          <ModalFormAmount dispatchAmount={dispatchFormAction} totalValue={formState.totalValue.toFixed(2)}/>
         </div>
       </form>
     </React.Fragment>
