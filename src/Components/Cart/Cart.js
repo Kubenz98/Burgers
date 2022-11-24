@@ -23,7 +23,7 @@ const Cart = (props) => {
   const clickHandler = () => {
     ctx.buyHandler();
     props.modalAfterBuyHandle();
-    props.modalHandle();
+    // props.modalHandle();
     props.cartIsActiveHandler(false);
   };
 

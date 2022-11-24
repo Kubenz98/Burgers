@@ -15,9 +15,11 @@
 .modal {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   width: 90%;
   max-width: 640px;
+  min-height: 300px;
   margin: 20vh auto 0;
   background-color: white;
   border-radius: 10px;
