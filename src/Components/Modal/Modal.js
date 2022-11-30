@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import ModalAfterBuyContent from "./ModalAfterBuyContent/ModalAfterBuyContent";
 import ModalCloseIcon from "./ModalCloseIcon";
 import ModalMeal from "./ModalMeal";
-import ModalForm from "./ModalForm";
+import ModalForm from "./ModalMealForm/ModalForm";
 import Cart from "../Cart/Cart";
 import classes from "./Modal.module.scss";
 
@@ -23,7 +22,6 @@ const ModalOverlay = (props) => {
     content = (
       <Cart
         modalHandle={props.modalHandle}
-        modalAfterBuyHandle={props.modalAfterBuyHandle}
         cartIsActiveHandler={props.cartHandle}
       />
     );
@@ -37,23 +35,12 @@ const ModalOverlay = (props) => {
     );
   }
 
-  if (!props.cartStatus && props.isBuyed) {
-    content = (
-      <ModalAfterBuyContent
-        afterBuyHandle={props.modalAfterBuyHandle}
-        modalState={props.modalHandle}
-      />
-    );
-  }
-
   return (
     <div className={classes.overlay}>
       <div className={classes.modal}>
-        {!props.isBuyed && (
           <button onClick={clickHandler} className={classes.close}>
             <ModalCloseIcon />
           </button>
-        )}
         {content}
       </div>
     </div>
@@ -69,8 +56,6 @@ const Modal = (props) => {
           meal={props.mealHandle}
           cartStatus={props.cartStatus}
           cartHandle={props.cartHandle}
-          modalAfterBuyHandle={props.modalAfterBuyHandle}
-          isBuyed={props.isBuyed}
         />,
         document.getElementById("overlay")
       )}

@@ -10,7 +10,6 @@ function App() {
   const [isModalActive, setIsModalActive] = useState(false);
   const [clickedMeal, setClickedMeal] = useState("");
   const [isCartActive, setIsCartActive] = useState(false);
-  const [isBuyed, setIsBuyed] = useState(false);
 
   const modalHandler = () => {
     setIsModalActive((prevState) => !prevState);
@@ -18,9 +17,6 @@ function App() {
 
   const getClickedMeal = (item) => {
     setClickedMeal(item);
-  };
-  const modalAfterBuyHandler = () => {
-    setIsBuyed((prevState) => !prevState);
   };
 
   let modalContent;
@@ -32,8 +28,6 @@ function App() {
         mealHandle={clickedMeal}
         cartStatus={isCartActive}
         cartHandle={setIsCartActive}
-        modalAfterBuyHandle={modalAfterBuyHandler}
-        isBuyed={isBuyed}
       />
     );
   }

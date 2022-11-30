@@ -1,0 +1,93 @@
+.form {
+  padding: 20px;
+  overflow: auto;
+  background-color: transparent;
+  @media (max-width: 1024px) {
+    max-width: 350px;
+    padding: 40px 20px;
+    margin: 0 auto;
+  }
+  @media (max-width: 600px) {
+    padding: 50px 20px;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  & label {
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 20px;
+    @media (max-width: 1024px) {
+      font-size: 26px;
+    }
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
+  }
+
+  & input {
+    width: 350px;
+    max-width: 100%;
+    font: inherit;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    @media (max-width: 1024px) {
+      font-size: 24px;
+    }
+  }
+
+  & span {
+    color: #b40e0e;
+    @media (max-width: 1024px) {
+      font-size: 18px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  gap: 20px;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+  @media (max-width: 350px) {
+    gap: 10px;
+  }
+
+  & button {
+    font: inherit;
+    color: #444;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 32px;
+    font-size: 22px;
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
+
+    &.submit {
+      background-color: #ff8000;
+      color: white;
+    }
+  }
+}
+
+.invalid {
+  & label {
+    color: #ca3e51;
+  }
+  & input {
+    border-color: #aa0b20;
+    background-color: #ffeff1;
+  }
+}

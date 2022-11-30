@@ -1,7 +1,7 @@
 import React, { useContext, useReducer, useCallback } from "react";
 import ModalFormAmount from "./ModalFormAmount";
 import ModalFormAdditions from "./ModalFormAdditions/ModalFormAdditions";
-import CartContext from "../../store/cart-context";
+import CartContext from "../../../store/cart-context";
 import classes from "./ModalForm.module.scss";
 
 const formReducer = (state, action) => {

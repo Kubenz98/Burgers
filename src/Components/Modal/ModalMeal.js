@@ -12,7 +12,6 @@ const ModalMeal = (props) => {
           <img src={props.meal.img} alt="meal-img" />
         </div>
       </div>
-      {/* <span className={classes["item__price"]}>${props.meal.price}</span> */}
     </div>
   );
 };
