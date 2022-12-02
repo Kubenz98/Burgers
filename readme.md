@@ -1,5 +1,5 @@
 ## Description
-Food order app, includes a few meals with optional additives, and a cart, where you can change amount of your ordered meal.
+Food order app, includes a few meals with optional additives, and a cart, where you can change amount of your ordered meal. Also includes a form validation at the end of the order.
 
 ## Tech Stack
 HTML, SCSS, Javascript, React, Webpack
