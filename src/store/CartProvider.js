@@ -2,13 +2,13 @@ import React, { useReducer } from "react";
 import CartContext from "./cart-context";
 
 const CartReducer = (state, action) => {
+
   if (action.type === "ADD") {
+    
     const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
     const existingItem = state.items.find(
-      (el) =>
-        el.title === action.val.title &&
-        equals(el.additions, action.val.additions)
+      (el) => el.title === action.val.title && equals(el.additions, action.val.additions)
     );
     const existingItemIndex = state.items.indexOf(existingItem);
 
@@ -19,9 +19,7 @@ const CartReducer = (state, action) => {
         }
         return el;
       });
-      const updatedTotalPrice =
-        state.totalPrice +
-        (action.val.price + action.val.additionsPrice) * action.val.amount;
+      const updatedTotalPrice = state.totalPrice + (action.val.price + action.val.additionsPrice) * action.val.amount;
       const updatedTotalAmount = state.totalAmount + action.val.amount;
 
       return {
@@ -43,30 +41,22 @@ const CartReducer = (state, action) => {
       totalPrice: updatedTotalPrice,
       totalAmount: updatedTotalAmount,
     };
-  } else if (action.type === "PLUS_ONE") {
-    const updatedStateItems = state.items.map((el) => {
-      if (el.id === action.val.id) {
-        el.amount++;
-      }
-      return el;
-    });
+  } else if (action.type === "REMOVE_ONE") {
 
-    const updatedTotalPrice =
-      state.totalPrice + (action.val.price + action.val.additionsPrice);
-    const updatedTotalAmount = state.totalAmount + 1;
-
-    return {
-      items: updatedStateItems,
-      totalPrice: updatedTotalPrice.toFixed(2) * 1,
-      totalAmount: updatedTotalAmount,
-    };
-  } else if (action.type === "MINUS_ONE") {
-    const updatedStateItems = state.items.map((el) => {
-      if (el.id === action.val.id) {
-        el.amount--;
-      }
-      return el;
-    });
+    const itemsToUpdate = [...state.items];
+    const existingItem = itemsToUpdate.find(el => el.id === action.val.id);
+    let updatedStateItems;
+    
+    if(existingItem.amount === 1) {
+      updatedStateItems = itemsToUpdate.filter(el => el.id !== existingItem.id)
+    } else {
+        updatedStateItems = itemsToUpdate.map(el => {
+        if(el.id === action.val.id) {
+          el.amount--;
+        }
+        return el
+    })
+  }
     const updatedTotalPrice =
       state.totalPrice - (action.val.price + action.val.additionsPrice);
     const updatedTotalAmount = state.totalAmount - 1;
@@ -99,11 +89,9 @@ export const CartProvider = (props) => {
   const addOrderHandler = (item) => {
     dispatchCartAction({ type: "ADD", val: item });
   };
-  const PlusOneItemHandler = (item) => {
-    dispatchCartAction({ type: "PLUS_ONE", val: item });
-  };
-  const MinusOneItemHandler = (item) => {
-    dispatchCartAction({ type: "MINUS_ONE", val: item });
+
+  const removeItemHandler = (item) => {
+    dispatchCartAction({ type: "REMOVE_ONE", val: item });
   };
 
   const buyHandler = () => {
@@ -117,8 +105,7 @@ export const CartProvider = (props) => {
         totalAmount: cartState.totalAmount,
         totalPrice: cartState.totalPrice,
         addItem: addOrderHandler,
-        plus: PlusOneItemHandler,
-        minus: MinusOneItemHandler,
+        removeItem: removeItemHandler,
         buyHandler: buyHandler,
       }}
     >

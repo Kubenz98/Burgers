@@ -1,22 +1,23 @@
 import React, { useContext } from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
-import classes from "./CartList.module.scss"
+import classes from "./CartList.module.scss";
 const CartList = () => {
   const ctx = useContext(CartContext);
 
   const clickAddHandler = (item) => {
-    ctx.plus(item);
-  }
-  const clickRemoveHandler = (item) => {
-    ctx.minus(item);
-  };
+    const copiedItem = JSON.parse(JSON.stringify(item));
 
-  const filteredItems = ctx.items.filter((el) => el.amount > 0);
+    copiedItem.amount = 1;
+    ctx.addItem(copiedItem);
+  };
+  const clickRemoveHandler = (item) => {
+    ctx.removeItem(item);
+  };
 
   return (
     <ul className={classes.ul}>
-      {filteredItems.map((item, index) => (
+      {ctx.items.map((item, index) => (
         <CartItem
           itemData={item}
           key={index}
